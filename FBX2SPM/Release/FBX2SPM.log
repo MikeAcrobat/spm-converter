@@ -1,0 +1,48 @@
+﻿Build started 06.08.2012 14:53:31.
+     1>Project "D:\SoftPixel\FBX2SPM\FBX2SPM\FBX2SPM.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Release\FBX2SPM.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "Release\FBX2SPM.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D FBXSDK_NEW_API /D _UNICODE /D UNICODE /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp SPMExpoter.cpp SPMTypes.cpp utilities.cpp
+         main.cpp
+     1>C:\Program Files (x86)\boost\boost_1_50\boost/math/special_functions/fpclassify.hpp(101): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+                 C:\Program Files (x86)\boost\boost_1_50\boost/math/special_functions/fpclassify.hpp(524) : see reference to function template instantiation 'bool boost::math_detail::is_nan_helper<float>(T,const boost::true_type &)' being compiled
+                 with
+                 [
+                     T=float
+                 ]
+     1>C:\Program Files (x86)\boost\boost_1_50\boost/math/special_functions/fpclassify.hpp(101): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+                 C:\Program Files (x86)\boost\boost_1_50\boost/math/special_functions/fpclassify.hpp(525) : see reference to function template instantiation 'bool boost::math_detail::is_nan_helper<double>(T,const boost::true_type &)' being compiled
+                 with
+                 [
+                     T=double
+                 ]
+     1>C:\Program Files (x86)\boost\boost_1_50\boost/math/special_functions/fpclassify.hpp(101): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+                 C:\Program Files (x86)\boost\boost_1_50\boost/math/special_functions/fpclassify.hpp(526) : see reference to function template instantiation 'bool boost::math_detail::is_nan_helper<long double>(T,const boost::true_type &)' being compiled
+                 with
+                 [
+                     T=long double
+                 ]
+         SPMExpoter.cpp
+         SPMTypes.cpp
+         utilities.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\SoftPixel\FBX2SPM\Release\FBX2SPM.exe" /INCREMENTAL:NO /NOLOGO "fbxsdk-2013.2-mt.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\FBX2SPM.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\SoftPixel\FBX2SPM\Release\FBX2SPM.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\SoftPixel\FBX2SPM\Release\FBX2SPM.lib" /MACHINE:X86 Release\main.obj
+         Release\SPMExpoter.obj
+         Release\SPMTypes.obj
+         Release\utilities.obj
+         Generating code
+         Finished generating code
+         FBX2SPM.vcxproj -> D:\SoftPixel\FBX2SPM\Release\FBX2SPM.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\SoftPixel\FBX2SPM\Release\FBX2SPM.exe;#1" /manifest Release\FBX2SPM.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\FBX2SPM.unsuccessfulbuild".
+         Touching "Release\FBX2SPM.lastbuildstate".
+     1>Done Building Project "D:\SoftPixel\FBX2SPM\FBX2SPM\FBX2SPM.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:12.38
