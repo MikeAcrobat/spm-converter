@@ -134,9 +134,9 @@ spmVertex GetVertex( FbxMesh * mesh, int poly, int vert, int surfaceId, int vert
 	FbxVector4 normal;
 	if (mesh->GetPolygonVertexNormal(poly, vert, normal)) 
 	{
-		vertex.normal.x = (float)normal[0];
-		vertex.normal.y = (float)normal[1];
-		vertex.normal.z = (float)normal[2];
+		vertex.normal.x =   (float)normal[0];
+		vertex.normal.y =   (float)normal[1];
+		vertex.normal.z = - (float)normal[2];
 	}
 	else 
 	{
