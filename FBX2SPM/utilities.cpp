@@ -236,7 +236,7 @@ void DisplayAnimation(FbxScene* pScene)
 		lOutputString += "\n\n";
 		FBXSDK_printf(lOutputString);
 
-		DisplayAnimation(lAnimStack, pScene->GetRootNode(), true);
+		//DisplayAnimation(lAnimStack, pScene->GetRootNode(), true);
 		DisplayAnimation(lAnimStack, pScene->GetRootNode());
 	}
 }

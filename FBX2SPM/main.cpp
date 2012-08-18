@@ -12,29 +12,33 @@ int main(int argc, char* argv[])
 	po::options_description desc("Allowed options");
 	desc.add_options()
 		("help", "produce help message")
-		("in", po::value<std::string>(), "input file")
-		("out", po::value<std::string>(), "output file")
+		("input", po::value<std::string>(), "input file")
+		("output", po::value<std::string>(), "path with file prefix")
+		("name", po::value<std::string>(), "export named model")
+		("local", "export in local axis")
+		("h", "display hierarchy")
+		("m", "display mesh data")
 		;
 
 	po::variables_map vm;
 	po::store(po::parse_command_line(argc, argv, desc), vm);
 	po::notify(vm);    
 
-	//if (vm.count("help")) {
-		std::cout << desc << "\n";
-	//	return 1;
-	//}
-
+	std::cout << desc << "\n";
+	
 	std::string input;
 	std::string output;
+	std::string namedModel;
+	bool displyHierarchy = false;
+	bool displayMeshData = false;
+	localSpace = false;
 
-	if (vm.count("in"))
-		input = vm["in"].as<std::string>();
-
-	if (vm.count("out"))
-		output = vm["out"].as<std::string>();
-
-	if (input.empty()) return 1;
+	if (vm.count("input"))	input = vm["input"].as<std::string>();
+	if (vm.count("output"))	output = vm["output"].as<std::string>();
+	if (vm.count("name"))	namedModel = vm["name"].as<std::string>();
+	if (vm.count("h"))		displyHierarchy = true;
+	if (vm.count("m"))		displayMeshData = true;
+	if (vm.count("local"))	localSpace = true;
 
 	SPMExporter exporter;
 	FbxManager* lSdkManager = FbxManager::Create();
@@ -50,15 +54,41 @@ int main(int argc, char* argv[])
 	lImporter->Import(lScene);	
 	lImporter->Destroy();
 	FbxNode* lRootNode = lScene->GetRootNode();
+
+	if (displyHierarchy) DisplayHierarchy(lScene);
+
 	if (!output.empty()) 
-	{
+	{		
 		spmObject obj;
-		int childCount = lRootNode->GetChildCount();
-		for (int i = 0; i < childCount; i++)
+		if (!namedModel.empty())
 		{
-			spmSubmesh sbmesh = CreateObject(lRootNode->GetChild(i));
-			obj.subMeshes.push_back(sbmesh);
-		}		
+			FbxNode * child = lRootNode->FindChild(namedModel.c_str());
+			if (child)
+			{
+				DisplayString("Exporting ", child->GetName());
+				spmSubmesh sbmesh = CreateObject(child);
+				obj.subMeshes.push_back(sbmesh);
+			}
+		}
+		else
+		{
+			int childCount = lRootNode->GetChildCount();
+			for (int i = 0; i < childCount; i++)
+			{
+				FbxNode * child = lRootNode->GetChild(i);
+				if (child->GetMesh())
+				{
+					DisplayString("Exporting ", child->GetName());
+					if (displayMeshData) DisplayMesh(child);
+					spmSubmesh sbmesh = CreateObject(child);
+					obj.subMeshes.push_back(sbmesh);
+				}
+				else
+				{
+					DisplayString("Skipping ", child->GetName());
+				}
+			}		
+		}
 		exporter.exportObject(obj, output);
 	}
 
