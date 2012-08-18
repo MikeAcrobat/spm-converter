@@ -1,6 +1,7 @@
 #include "SPMTypes.h"
 
 bool localSpace = false;
+bool meshOnly = false;
 
 spmSubmesh CreateObject( FbxNode * node )
 {
@@ -10,8 +11,6 @@ spmSubmesh CreateObject( FbxNode * node )
 	if (!mesh) return spmSubmesh();
 
 	DisplayString("collecting data ", node->GetName());
-
-	mesh->ComputeVertexNormals(true);
 
 	int materialCount = node->GetMaterialCount();
 	// 1 material = 1 sub mesh
