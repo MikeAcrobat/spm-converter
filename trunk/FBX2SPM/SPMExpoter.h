@@ -3,6 +3,7 @@
 #include <fstream>
 #include <cassert>
 #include <sstream>
+#include <algorithm>
 #include "SPMTypes.h"
 
 class SPMExporter 
@@ -17,6 +18,10 @@ private:
 	void writeChunkTexture(spmTexture & texture);
 	void writeChunkVertex(spmVertex & vertex);
 	void writeChunkTriangle(spmTriangle & tri);
+	void writeChunkAnimation(spmSkeletalAnimation & animation);
+	void writeChunkAnimationJoint(spmAnimationJoint & joint);
+	void writeChunkWeight(spmJointVertexWeight & weight);
+	void writeChunkKeyFrame(spmJointKeyframe & frame);
 
 	void writeInt(int i);
 	void writeUInt(unsigned int i);

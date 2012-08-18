@@ -1,3 +1,4 @@
+#pragma once
 #include <fbxsdk.h>
 #define MAT_HEADER_LENGTH 200
 /************************************************************************/
